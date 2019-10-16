@@ -942,8 +942,8 @@ final class LinuxDisplay implements DisplayImplementation {
                         if (current_displaymode_extension == XRANDR) {
                                 // nGetAvailableDisplayModes cannot be trusted. Use it only for bitsPerPixel
                                 DisplayMode[] nDisplayModes = nGetAvailableDisplayModes(getDisplay(), getDefaultScreen(), current_displaymode_extension);
-                                int bpp = 24;
-                                if (nDisplayModes.length > 0) {
+                                int bpp = 24; // if null or empty, just default to 24 bits/pixel
+                                if (nDisplayModes != null && nDisplayModes.length > 0) {
                                     bpp = nDisplayModes[0].getBitsPerPixel();
                                 }
                                 // get the resolutions and frequencys from XRandR
